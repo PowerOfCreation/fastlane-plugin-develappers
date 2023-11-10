@@ -44,6 +44,8 @@ module Fastlane
         end.select do |info_plist_path|
           !info_plist_path.nil? && !info_plist_path.empty?
         end.uniq.map do |info_plist_path|
+          UI.message "xcodeproj_path is #{xcodeproj_path}"
+          UI.message "info_plist_path is #{info_plist_path}"
           Pathname.new(File.expand_path(File.join(xcodeproj_path, '..', info_plist_path))).to_s
         end
       end
